@@ -1,32 +1,22 @@
-import {
-  createStore,
-  applyMiddleware
-} from "redux";
-import createSagaMiddleware from "redux-saga";
-import {
-  composeWithDevTools
-} from "redux-devtools-extension";
-import combineReducers from "../reducers";
-import {
-  helloSaga
-} from "../sagas/sagas";
-const composeEnhancers = composeWithDevTools({
-  // Specify here name, actionsBlacklist, actionsCreators and other options
-});
+// store.js
+// import React, {createContext, useReducer} from 'react';
 
-// store middleware
-const sagaMiddleware = createSagaMiddleware();
+// const initialState = {};
+// const store = createContext(initialState);
+// const { Provider } = store;
 
-// create store
-const store = createStore(
-  combineReducers,
-  composeEnhancers(
-    applyMiddleware(sagaMiddleware)
-    // other store enhancers if any
-  )
-);
+// const StateProvider = ( { children } ) => {
+//   const [state, dispatch] = useReducer((state, action) => {
+//     switch(action.type) {
+//       case 'action description':
+//         const newState = {}
+//         return newState;
+//       default:
+//         throw new Error();
+//     };
+//   }, initialState);
 
-sagaMiddleware.run(helloSaga)
+//   return <Provider value={{ state, dispatch }}>{children}</Provider>;
+// };
 
-// sagaMiddleware.run(rootSaga);
-export default store;
+// export { store, StateProvider }

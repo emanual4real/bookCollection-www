@@ -1,12 +1,10 @@
 import React from "react";
-import { connect } from "react-redux";
 // import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolderPlus } from "@fortawesome/free-solid-svg-icons";
 
 function BookFooter(props) {
   const { header } = props;
-  console.log("header", header);
 
   return (
     <tr key={`tr-new-book`} className="d-flex">
@@ -28,12 +26,4 @@ function BookFooter(props) {
   );
 }
 
-const mapStateToProps = (state, ownProps) => {
-  const { bookReducer } = state;
-  const { header } = bookReducer;
-  return { header };
-};
-
-const mapDispatchToProps = {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(BookFooter);
+export default BookFooter;

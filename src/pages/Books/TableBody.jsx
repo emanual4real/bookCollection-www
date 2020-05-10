@@ -1,11 +1,11 @@
 import React from "react";
-import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
 function TableBody(props) {
   const { books, header } = props;
+
   // take all books and map it across a filtered and sorted header
   const row = books.map((book) => {
     return (
@@ -31,12 +31,34 @@ function TableBody(props) {
   return row;
 }
 
-const mapStateToProps = (state, ownProps) => {
-  const { bookReducer } = state;
-  const { books, header } = bookReducer;
-  return { books, header };
+TableBody.propTypes = {
+  books: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string,
+      Realm: PropTypes.string,
+      Series: PropTypes.string,
+      Title: PropTypes.string,
+      Author: PropTypes.string,
+      Editor: PropTypes.string,
+      Release: PropTypes.string,
+      ISBN: PropTypes.string,
+    })
+  ),
 };
 
-const mapDispatchToProps = {};
+TableBody.defaultProps = {
+  books: [
+    {
+      _id: "",
+      Realm: "",
+      Series: "",
+      Title: "",
+      Author: "",
+      Editor: "",
+      Release: "",
+      ISBN: "",
+    },
+  ],
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(TableBody);
+export default TableBody;

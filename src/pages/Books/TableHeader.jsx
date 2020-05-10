@@ -1,5 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
 // import PropTypes from "prop-types";
 
 function TableHeader(props) {
@@ -19,12 +18,4 @@ function TableHeader(props) {
   return <React.Fragment>{row}</React.Fragment>;
 }
 
-const mapStateToProps = (state, ownProps) => {
-  const { bookReducer } = state;
-  const { header } = bookReducer;
-  return { header };
-};
-
-const mapDispatchToProps = {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(TableHeader);
+export default TableHeader;
