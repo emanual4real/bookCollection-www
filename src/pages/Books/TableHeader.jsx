@@ -1,18 +1,30 @@
 import React from "react";
+import { connect } from "react-redux";
 // import PropTypes from "prop-types";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFolderPlus } from "@fortawesome/free-solid-svg-icons";
 
-function BookFooter(props) {
-  const { book } = props;
+function TableHeader(props) {
+  const { header } = props;
 
-  return (
-    <td className={b.className} style={{ display: !b.visible ? "none" : "" }}>
-      <button>
-        <FontAwesomeIcon icon={faFolderPlus} />
-      </button>
-    </td>
-  );
+  const row = header
+    .filter((col) => col.visible === true)
+    .sort((a, b) => (a.order < b.order ? -1 : 1))
+    .map((col) => {
+      return (
+        <th key={`header-${col.name}`} className="col">
+          {col.title}
+        </th>
+      );
+    });
+
+  return <React.Fragment>{row}</React.Fragment>;
 }
 
-export default BookFooter;
+const mapStateToProps = (state, ownProps) => {
+  const { bookReducer } = state;
+  const { header } = bookReducer;
+  return { header };
+};
+
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TableHeader);

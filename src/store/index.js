@@ -7,7 +7,9 @@ import {
   composeWithDevTools
 } from "redux-devtools-extension";
 import combineReducers from "../reducers";
-// import rootSaga from '../sagas';
+import {
+  helloSaga
+} from "../sagas/sagas";
 const composeEnhancers = composeWithDevTools({
   // Specify here name, actionsBlacklist, actionsCreators and other options
 });
@@ -19,10 +21,12 @@ const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   combineReducers,
   composeEnhancers(
-    applyMiddleware()
+    applyMiddleware(sagaMiddleware)
     // other store enhancers if any
   )
 );
+
+sagaMiddleware.run(helloSaga)
 
 // sagaMiddleware.run(rootSaga);
 export default store;
