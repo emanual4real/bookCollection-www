@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { getBooks } from "../../util/apiRequests";
-import TableBody from "./TableBody";
+import Table from "./Table";
+import AddBookForm from "./AddBookForm";
 
 function Books() {
   // book data from API
@@ -20,7 +21,8 @@ function Books() {
   return (
     <div>
       <h1>Books Page</h1>
-      <TableBody books={bookData}></TableBody>
+      <Table books={bookData}></Table>
+      <AddBookForm />
     </div>
   );
 }
