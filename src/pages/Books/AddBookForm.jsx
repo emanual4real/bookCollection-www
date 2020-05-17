@@ -82,7 +82,6 @@ function AddBookForm() {
                   type="text"
                   name={key}
                   value={state[key]}
-                  onChange={(e) => onChange(e)}
                 />
               </Label>
             ))}
