@@ -12,14 +12,16 @@ _NOTE: Technically, I'm a professional programmer because I'm paid at work to wr
 
 - Home Page
 - Login Page
-- Book Search Page
+  - Choose an authentication option
 - Book Page
   - GET books - complete
+  - ADD books - complete
   - UPDATE books
   - DELETE books
-  - SORT books
-  - FILTER books
+  - SORT books - complete
+  - FILTER books - in progress
   - REARRANGE columns
 - Collection Page
-  - Add to collection
+  - Create Collection page
+  - Add book to collection
   - Remove from collection
