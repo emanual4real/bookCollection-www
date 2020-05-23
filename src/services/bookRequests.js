@@ -1,9 +1,10 @@
 // get books API call
-export const getBooks = ((book) => {
-    var requestOptions = {
+export const getBooks = (async (book) => {
+    const requestOptions = {
         method: 'GET',
+        headers: {"Content-Type":"application/json"},
         redirect: 'follow'
-    };
+        };
 
     //"http://localhost:8080/books"
     return fetch("/books/", requestOptions)
@@ -12,16 +13,14 @@ export const getBooks = ((book) => {
 })
 
 export const addBook = (async (book) => {
-    const raw = JSON.stringify(book);
-
     const requestOptions = {
     method: 'POST',
     headers: {"Content-Type":"application/json"},
-    body: raw,
+    body: JSON.stringify(book),
     redirect: 'follow'
     };
     // "http://localhost:8080/books/"
-    fetch("/books/", requestOptions)
+    return fetch("/books/", requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
