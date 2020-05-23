@@ -12,7 +12,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolderPlus } from "@fortawesome/free-solid-svg-icons";
 import bookColumns from "./BookColumns";
-import { addBook } from "../../util/apiRequests";
+import { addBook } from "../../services/bookRequests";
 
 // handle state of the component
 function reducer(state, action) {
@@ -82,6 +82,7 @@ function AddBookForm() {
                   type="text"
                   name={key}
                   value={state[key]}
+                  onChange={(e) => onChange(e)}
                 />
               </Label>
             ))}
